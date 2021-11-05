@@ -1,0 +1,31 @@
+{
+
+  "devices":
+  [
+    {
+      "name": "qiskit.ibmq",
+      "backend": "ibmq_qasm_simulator",
+      "ibmqx_token": "{QISKIT Token Here}",
+      "hub": "ibm-q-ornl",
+      "group": "ornl",
+      "project": "csc442"
+    },
+    {
+      "name": "qiskit.ibmq",
+      "backend": "ibmq_manila"
+    }
+  ],
+    "layers":
+    [
+      {
+      "type": "rot"
+      },
+
+      {
+      "type": "rot"
+      },
+      {
+      "type": "rot"
+      }
+]
+}

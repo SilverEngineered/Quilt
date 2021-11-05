@@ -1,0 +1,35 @@
+{
+
+  "devices":
+  [
+    {
+      "name": "qiskit.ibmq",
+      "backend": "ibmq_qasm_simulator",
+      "ibmqx_token": "{QISKIT Token Here}",
+      "hub": "ibm-q-university",
+      "group": "northeastern-uni",
+      "project": "main"
+    },
+    {
+      "name": "qiskit.ibmq",
+      "backend": "ibmq_qasm_simulator"
+    },
+    {
+      "name": "qiskit.ibmq",
+      "backend": "ibmq_qasm_simulator"
+    }
+  ],
+    "layers":
+    [
+      {
+      "type": "rot"
+      },
+
+      {
+      "type": "rot"
+      },
+      {
+      "type": "rot"
+      }
+]
+}
