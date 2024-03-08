@@ -10,11 +10,11 @@ from matplotlib import pyplot as plt
 class Full_D:
     def __init__(self, args):
         alpha = .5
-        self.dataset = "8_multiclass"
+        self.dataset = args.dataset_name or "8_multiclass"
         self.bitc = MultiClassEnsemble(args)
-        self.assis = [AssistedModel(str(i), alpha, is_aux=True) for i in range(8)]
+        self.assis = [AssistedModel(str(i), alpha, is_aux=True) for i in range(4)]
         self.batch_size=40
-        self.epochs = 100
+        self.epochs = args.training_epochs or 200
         self.real = False
     def train(self):
         self.bitc.train()

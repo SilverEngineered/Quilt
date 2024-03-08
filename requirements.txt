@@ -1,0 +1,11 @@
+qiskit==0.46.0
+pennylane==0.29.1
+qiskit-aer==0.12.0
+numpy==1.23.5
+tqdm==4.66.2
+tensorflow==2.15.0
+scikit-learn==1.4.1.post1
+PennyLane-SF==0.30.0
+PennyLane-qiskit==0.29.0
+matplotlib==3.8.3
+qiskit-ibmq-provider==0.20.2
