@@ -9,13 +9,13 @@ from utils.smallmodel_functions import weights_save
 from tqdm import tqdm
 class MultiClassEnsemble:
     def __init__(self, args, dataset="8_multiclass", crazy=False, save_name=None):
-        self.dataset_name=dataset
+        self.dataset_name = args.dataset_name or dataset
         self.num_wires = args.num_wires
         self.device_file = args.device_file
         #self.devices = get_devices(self.device_file, self.num_wires)
 
 
-        self.x_train, self.y_train, self.x_valid, self.y_valid, self.num_qubits = process(dataset, crazy)
+        self.x_train, self.y_train, self.x_valid, self.y_valid, self.num_qubits = process(self.dataset_name, crazy)
         size = self.x_train.shape[0]
         self.x_test = self.x_train[int(size*.8):]
         self.y_test = self.y_train[int(size * .8):]
@@ -30,10 +30,10 @@ class MultiClassEnsemble:
         self.num_layers = args.num_layers
         self.features = None
         self.load = args.load
-        self.num_epochs = args.training_epochs
+        self.num_epochs = args.training_epochs or 200
         if crazy:
             self.num_epochs = 100
-        self.num_classes = 8
+        self.num_classes = 4
         self.experts = 5
         #self.dataset_name += "15"
         self.debug = True
@@ -110,7 +110,7 @@ class MultiClassEnsemble:
         for image in images:
             guesses = []
             for count, w in enumerate(best_weights):
-                guesses.append(prediction(classifier(w, mixed_layers=self.mixed_layers,features=image, num_qubits=self.num_qubits, count=count),8))
+                guesses.append(prediction(classifier(w, mixed_layers=self.mixed_layers,features=image, num_qubits=self.num_qubits, count=count),self.num_classes))
             if method == 'partial':
                 expert_guess_weighted = get_expert_guess(guesses, 'weighted-partial', accs, self.num_qubits)
             if method == 'ensemble':
