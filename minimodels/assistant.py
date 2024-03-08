@@ -11,7 +11,7 @@ class AssistedModel:
         self.x_test = self.x_train[int(size*.8):]
         self.y_test = self.y_train[int(size * .8):]
         self.x_train = self.x_train[:int(size*.8)]
-        self.y_train = self.x_train[:int(size * .8)]
+        self.y_train = self.y_train[:int(size * .8)]
 
         self.dataset=dataset
         if save_name:
