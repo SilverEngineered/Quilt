@@ -4,7 +4,7 @@ import pennylane as qml
 from pennylane import numpy as np
 from pennylane.templates import AmplitudeEmbedding
 import numpy
-import qiskit.providers.aer.noise as noise
+import qiskit_aer.noise as noise
 
 warnings.filterwarnings('ignore')
 warnings.filterwarnings('ignore')
@@ -126,7 +126,7 @@ def classifier_noisy(weights, features=None, num_wires=5, mixed_layers=False, nu
         return [qml.expval(qml.PauliZ(0))]
 
 
-@qml.qnode(qml.device(name='qiskit.ibmq', wires=5, backend='ibmq_manila', ibmqx_token="f75a3efcda7934b18c5ae023d3becc2d00537f13d500bdca5c7844385fa019f9bc84d766098e28d2c836a4c952434b6e2e902f173b5678c1de89bfe776a9ac81"))
+@qml.qnode(qml.device(name='qiskit.ibmq', wires=5, backend='ibm_brisbane', ibmqx_token="f75a3efcda7934b18c5ae023d3becc2d00537f13d500bdca5c7844385fa019f9bc84d766098e28d2c836a4c952434b6e2e902f173b5678c1de89bfe776a9ac81"))
 def classifier_real(weights, features=None, num_wires=5, mixed_layers=False, num_qubits=3):
     AmplitudeEmbedding(features=features.astype('float64'), wires=range(num_wires), normalize=True)
     for count, W in enumerate(weights):
